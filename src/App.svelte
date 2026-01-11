@@ -4,7 +4,7 @@
 	import {createContext, type Snippet} from "svelte";
 	import "./app.tw.css";
 
-	export class App {
+	export class AppState {
 		public toast = $state<Toast>({
 			addToQueue() {
 				// Toast is not initialized.
@@ -24,7 +24,7 @@
 		public theme = $state("light-custom");
 	}
 
-	const [getApp, setApp] = createContext<App>();
+	const [getApp, setApp] = createContext<AppState>();
 	export {getApp};
 
 	const [getLocale, setLocale] = createContext<string>();
@@ -32,7 +32,7 @@
 </script>
 
 <script lang="ts">
-	const app = new App();
+	const app = new AppState();
 	setApp(app);
 	setLocale(document.documentElement.lang);
 
