@@ -1,4 +1,4 @@
-import { assert } from "./assert";
+import { assert } from "./assert.js";
 /** Provides autocompletion for tailwindcss */
 function tw(...classes) {
     return classes;

@@ -1,4 +1,4 @@
-import { basename, extname } from "path";
+import { basename, extname } from "node:path";
 export function resolveShikiLanguage(path) {
     const extension = extname(path);
     if (extension === basename(path)) {
