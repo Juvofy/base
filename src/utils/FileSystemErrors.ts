@@ -1,15 +1,3 @@
-export function createFileSystemError(name: string, defaultMessage?: ((path: string) => string) | string) {
-	return class FileSystemError extends DOMException {
-		public static defaultMessage = defaultMessage;
-		public readonly path: string;
-
-		constructor(path: string, message = defaultMessage) {
-			super(typeof message === "function" ? message(path) : message, name);
-			this.path = path;
-		}
-	};
-}
-
 export class InvalidPathError extends DOMException {
 	public readonly path: string;
 

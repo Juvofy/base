@@ -1,47 +1,109 @@
-# Svelte + TS + Vite
+# Juvofy Lib
 
-This template should help get you started developing with Svelte and TypeScript in Vite.
+**Juvofy Lib** is a comprehensive, open-source toolkit designed for internal purposes. It combines a robust **daisyUI** implementation with specialized Vite plugins and a suite of powerful TypeScript utilities.
 
-## Recommended IDE Setup
+---
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
+## 🎨 CSS Setup
 
-## Need an official Svelte framework?
+Because this library relies on Tailwind CSS and daisyUI, you need to tell Tailwind to scan the library for classes and include the library's base styles.
 
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
+Add the following to your global CSS file (e.g., `app.css`):
 
-## Technical considerations
+```css
+/* Ensure Tailwind scans the library components */
+@source "../../node_modules/@juvofy/lib";
 
-**Why use this over SvelteKit?**
-
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
-
-This template contains as little as possible to get started with Vite + TypeScript + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-vite` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
-
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
-
-**Why `global.d.ts` instead of `compilerOptions.types` inside `jsconfig.json` or `tsconfig.json`?**
-
-Setting `compilerOptions.types` shuts out all other types not explicitly listed in the configuration. Using triple-slash references keeps the default TypeScript setting of accepting type information from the entire workspace, while also adding `svelte` and `vite/client` type information.
-
-**Why include `.vscode/extensions.json`?**
-
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
-
-**Why enable `allowJs` in the TS template?**
-
-While `allowJs: false` would indeed prevent the use of `.js` files in the project, it does not prevent the use of JavaScript syntax in `.svelte` files. In addition, it would force `checkJs: false`, bringing the worst of both worlds: not being able to guarantee the entire codebase is TypeScript, and also having worse typechecking for the existing JavaScript. In addition, there are valid use cases in which a mixed codebase may be relevant.
-
-**Why is HMR not preserving my local component state?**
-
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/rixo/svelte-hmr#svelte-hmr).
-
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
-
-```ts
-// store.ts
-// An extremely simple external store
-import {writable} from "svelte/store";
-export default writable(0);
+/* Import Juvofy core styles */
+@import "@juvofy/lib/app.tw.css";
 ```
+
+---
+
+## 🚀 Features
+
+-   **Svelte + daisyUI:** Native Svelte implementation of daisyUI components with full TypeScript support.
+-   **Built-in Icons:** A custom SVG plugin that handles icon injection without duplicating SVG source code.
+-   **AOT Syntax Highlighting:** Integrated Shiki support for beautiful code blocks that don't slow down your site.
+-   **Advanced Controls:** Complex UI elements like `DatePicker`, `Combobox`, `FileTree`, and `DoubleRangeSlider` ready to use.
+-   **Developer Utilities:** Logic for breakpoints, filesystem operations, and reactive tasks.
+
+---
+
+## 📦 Installation
+
+Install the package via PNPM:
+
+```bash
+pnpm add github:Juvofy/base
+```
+
+Or you may prefer to copy the components to your code. If so, you can use this repo as a template.
+
+---
+
+## 🛠️ Component Overview
+
+Juvofy Lib is organized into functional categories to keep your imports clean:
+
+| Category       | Key Components                                                    |
+| -------------- | ----------------------------------------------------------------- |
+| **Actions**    | `Button`, `Dropdown`, `Dialog`, `ContextMenu`, `SpeedDial`        |
+| **Controls**   | `Combobox`, `DatePicker`, `Slider`, `FileUploader`, `Calendar`    |
+| **Display**    | `Card`, `Badge`, `Timeline`, `Accordion`, `FileTree`, `Countdown` |
+| **Feedback**   | `Toast`, `Tooltip`                                                |
+| **Navigation** | `Tabs`, `Tab`                                                     |
+| **AOT**        | `Svg` (Optimized icons), `Shiki` (Build-time highlighting)        |
+
+---
+
+## 🔌 Vite Plugins
+
+Supercharge your development environment with our custom build tools. In your `vite.config.ts`:
+
+```typescript
+import {defineConfig} from "vite";
+import {sveltekit} from "@sveltejs/kit/vite";
+import {svgPlugin, shikiPlugin} from "@juvofy/lib/vite";
+
+export default defineConfig({
+	plugins: [
+		sveltekit(),
+		svgPlugin("icon"), // Simplifies SVG usage [query parameter is configurable]
+		shikiPlugin(), // Ahead-of-time code highlighting [query parameter is ?shiki]
+	],
+});
+```
+
+---
+
+## 🧰 Utilities
+
+We’ve included a `utils` directory full of helpers that solve common "hobby dev" headaches:
+
+-   **`Task.svelte.ts`**: A way how to inspect promise status outside of the `{#await }` block.
+-   **`Breakpoint`**: A reactive value for Tailwind CSS breakpoint. Use it carefully, it can't work on SSR.
+-   **`FileSystem`**: A wrapper for the File System Access API (OPFS) providing high-level utility methods for file and directory management.
+
+---
+
+## 📖 Basic Usage
+
+Run this app to see the docs.
+
+```bash
+git clone https://github.com/Juvofy/base juvofy-lib
+cd juvofy-lib
+pnpm i
+pnpm dev
+```
+
+---
+
+## 🤝 Contributing
+
+This project is open source! If you found a bug or want to add a component, feel free to open a PR.
+
+**License:** MIT
+
+---

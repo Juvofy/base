@@ -1,22 +1,35 @@
 import {assert} from "./assert";
 import {InvalidPathError, EntryAlreadyExistsError} from "./FileSystemErrors";
 
+/**
+ * A wrapper for the File System Access API (OPFS) providing
+ * high-level utility methods for file and directory management.
+ */
 export class FileSystem {
-	private readonly root: FileSystemDirectoryHandle;
+	#root: FileSystemDirectoryHandle;
 
-	private constructor(root: FileSystemDirectoryHandle) {
-		this.root = root;
+	constructor(root: FileSystemDirectoryHandle) {
+		this.#root = root;
 	}
 
-	public get name() {
-		return this.root.name;
+	/** The name of the current directory handle. */
+	get name() {
+		return this.#root.name;
 	}
 
-	public static async boot() {
+	/**
+	 * Initializes the FileSystem by requesting the origin private file system root.
+	 * @returns A promise resolving to a new FileSystem instance.
+	 */
+	static async boot() {
 		return new this(await navigator.storage.getDirectory());
 	}
 
-	private processFilePath(path: string) {
+	/**
+	 * Internal helper to split a path into parent segments and the final target name.
+	 * @throws {InvalidPathError} If the path is empty or malformed.
+	 */
+	#processFilePath(path: string) {
 		const segments = path.split("/");
 		const filename = segments.pop();
 		assert(filename, new InvalidPathError(path));
@@ -24,24 +37,30 @@ export class FileSystem {
 		return {segments, filename};
 	}
 
-	private async getFileHandle(path: string, {create = false, silent = false}) {
-		const {segments, filename} = this.processFilePath(path);
-		const directory = await this.getDirectoryFromSegments(segments, create);
+	/**
+	 * Retrieves a file handle from a path.
+	 */
+	async #getFileHandle(path: string, {create = false, silent = false}) {
+		const {segments, filename} = this.#processFilePath(path);
+		const directory = await this.#getDirectoryFromSegments(segments, create);
 
-		if (!silent && (await this.doesFileExist(filename, directory))) {
+		if (!silent && (await this.#doesFileExist(filename, directory))) {
 			throw new EntryAlreadyExistsError(path);
 		}
 
 		return directory.getFileHandle(filename, {create});
 	}
 
-	private async getDirectoryFromSegments(
+	/**
+	 * Recursively traverses directory segments to find or create a target directory.
+	 */
+	async #getDirectoryFromSegments(
 		[first, ...segments]: string[],
 		create: boolean,
-		dir = this.root
+		dir = this.#root
 	): Promise<FileSystemDirectoryHandle> {
 		if (first) {
-			return this.getDirectoryFromSegments(
+			return this.#getDirectoryFromSegments(
 				segments,
 				create,
 				await dir.getDirectoryHandle(first, {create})
@@ -51,7 +70,10 @@ export class FileSystem {
 		}
 	}
 
-	private async doesFileExist(name: string, dir: FileSystemDirectoryHandle) {
+	/**
+	 * Checks if a file exists within a specific directory handle.
+	 */
+	async #doesFileExist(name: string, dir: FileSystemDirectoryHandle) {
 		try {
 			await dir.getFileHandle(name);
 			return true;
@@ -63,40 +85,65 @@ export class FileSystem {
 		}
 	}
 
-	public async writeFile(path: string, data: BlobPart, {type = "", silent = false}) {
-		const file = await this.getFileHandle(path, {create: true, silent});
+	/**
+	 * Writes data to a file. Creates the file and parent directories if they don't exist.
+	 * @param path Path where the file should be saved.
+	 * @param data Content to write (Blob, String, etc).
+	 * @param options.type MIME type for the file.
+	 * @param options.silent If true, overwrites existing files without throwing an error.
+	 */
+	async writeFile(path: string, data: BlobPart, {type = "", silent = false} = {}) {
+		const file = await this.#getFileHandle(path, {create: true, silent});
 		const blob = data instanceof Blob && !type ? data : new Blob([data], {type});
 		const writable = await file.createWritable();
 		await writable.write(blob);
 		await writable.close();
 	}
 
-	public async getFile(path: string) {
-		const file = await this.getFileHandle(path, {create: true});
+	/**
+	 * Retrieves the File object for a given path.
+	 */
+	async getFile(path: string) {
+		const file = await this.#getFileHandle(path, {create: true, silent: true});
 		return file.getFile();
 	}
 
-	public async createFilePath(path: string) {
-		await this.getFileHandle(path, {create: true});
+	/**
+	 * Ensures a file exists at the given path without writing data to it.
+	 */
+	async createFilePath(path: string) {
+		await this.#getFileHandle(path, {create: true});
 	}
 
-	public async getDirectory(path: string, create = false) {
-		const root = await this.getDirectoryFromSegments(path.split("/"), create);
+	/**
+	 * Returns a new FileSystem instance scoped to the provided directory path.
+	 */
+	async getDirectory(path: string, create = false) {
+		const root = await this.#getDirectoryFromSegments(path.split("/"), create);
 		return new FileSystem(root);
 	}
 
-	public async createDirectory(path: string) {
-		await this.getDirectoryFromSegments(path.split("/"), true);
+	/**
+	 * Creates a directory (and any necessary parent directories).
+	 */
+	async createDirectory(path: string) {
+		await this.#getDirectoryFromSegments(path.split("/"), true);
 	}
 
-	public async fileExists(path: string) {
-		const {segments, filename} = this.processFilePath(path);
-		const directory = await this.getDirectoryFromSegments(segments, false);
-		return this.doesFileExist(filename, directory);
+	/**
+	 * Checks if a file exists at the specified path.
+	 */
+	async fileExists(path: string) {
+		const {segments, filename} = this.#processFilePath(path);
+		const directory = await this.#getDirectoryFromSegments(segments, false);
+		return this.#doesFileExist(filename, directory);
 	}
 
-	public async list(path = "") {
-		const dir = await this.getDirectoryFromSegments(path.split("/"), false);
+	/**
+	 * Lists the names of all entries in a directory.
+	 */
+	async list(path = "") {
+		const dir = await this.#getDirectoryFromSegments(path.split("/"), false);
 		const result: string[] = [];
 
 		for await (const f of dir.keys()) {
@@ -106,8 +153,11 @@ export class FileSystem {
 		return result;
 	}
 
-	public async listContents(path = "") {
-		const dir = await this.getDirectoryFromSegments(path.split("/"), false);
+	/**
+	 * Returns the File or FileSystem (directory) objects for all items in a path.
+	 */
+	async listContents(path = "") {
+		const dir = await this.#getDirectoryFromSegments(path.split("/"), false);
 		const result: (FileSystem | File)[] = [];
 
 		for await (const f of dir.values()) {
@@ -119,6 +169,16 @@ export class FileSystem {
 		}
 
 		return result;
+	}
+
+	/**
+	 * Removes a file or directory.
+	 * @param path The path to the entry.
+	 */
+	async deleteFile(path: string) {
+		const {segments, filename} = this.#processFilePath(path);
+		const directory = await this.#getDirectoryFromSegments(segments, false);
+		await directory.removeEntry(filename);
 	}
 }
 

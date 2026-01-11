@@ -1,25 +1,25 @@
 import type {SpreadParameters} from "./SpreadParameters";
 
-type TaskValue<Result, Variables extends SpreadParameters> =
+type TaskValue<Result, Args extends SpreadParameters> =
 	| {status: "initial"}
-	| {status: "loading"; promise: Promise<Result>; variables: Variables}
+	| {status: "loading"; promise: Promise<Result>; args: Args}
 	| {status: "success"; result: Result}
 	| {status: "error"; error: unknown};
 
-export class Task<Result, Variables extends SpreadParameters = []> {
-	public value = $state.raw<TaskValue<Result, Variables>>({status: "initial"});
-	private readonly callback: (...variables: Variables) => Promise<Result>;
+export class Task<Result, Args extends SpreadParameters = []> {
+	public value = $state.raw<TaskValue<Result, Args>>({status: "initial"});
+	private readonly callback: (...args: Args) => Promise<Result>;
 
-	constructor(callback: (...variables: Variables) => Promise<Result>) {
+	constructor(callback: (...args: Args) => Promise<Result>) {
 		this.callback = callback;
 	}
 
-	public async start(...variables: Variables): Promise<Result> {
-		const promise = this.callback(...variables);
+	public async start(...args: Args): Promise<Result> {
+		const promise = this.callback(...args);
 		this.value = {
 			status: "loading",
 			promise,
-			variables,
+			args,
 		};
 		try {
 			const result = await promise;
@@ -38,9 +38,9 @@ export class Task<Result, Variables extends SpreadParameters = []> {
 		}
 	}
 
-	public hasStatus<S extends TaskValue<Result, Variables>["status"]>(
+	public hasStatus<S extends TaskValue<Result, Args>["status"]>(
 		status: S
-	): this is Task<Result, Variables> & {value: Extract<TaskValue<Result, Variables>, {status: S}>} {
+	): this is Task<Result, Args> & {value: Extract<TaskValue<Result, Args>, {status: S}>} {
 		return this.value.status === status;
 	}
 }

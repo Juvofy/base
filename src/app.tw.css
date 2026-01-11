@@ -1,14 +1,6 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-:root {
-	color-scheme: light dark;
-}
-
-* {
-	box-sizing: border-box;
-}
-
 @utility range-thin {
 	--range-fill: 0;
 	--depth: 0;
