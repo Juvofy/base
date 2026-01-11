@@ -1,5 +1,5 @@
 <script lang="ts" module>import Button from "./Button.svelte";
-import { event } from "@juvofy/lib/utils/event.ts";
+import { event } from "@juvofy/lib/utils/event";
 function isInputType(options, ...inputs) {
   return inputs.includes(options.type);
 }

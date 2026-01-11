@@ -1,6 +1,6 @@
 import type { HTMLInputAttributes } from "svelte/elements";
 import DualRangeInput from "@stanko/dual-range-input";
-import { tw } from "@juvofy/lib/utils/tw.ts";
+import { tw } from "@juvofy/lib/utils/tw";
 declare class DoubleRangeSlider extends DualRangeInput {
     update(method?: "floor" | "ceil"): void;
     private updateInputProgressValue;

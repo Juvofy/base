@@ -1,8 +1,8 @@
 <script lang="ts" module>import Dropdown from "../actions/Dropdown.svelte";
-import { escapeRegexPart } from "@juvofy/lib/utils/escapeRegexPart.ts";
+import { escapeRegexPart } from "@juvofy/lib/utils/escapeRegexPart";
 import Badge, {} from "../display/Badge.svelte";
-import { event } from "@juvofy/lib/utils/event.ts";
-import { tw } from "@juvofy/lib/utils/tw.ts";
+import { event } from "@juvofy/lib/utils/event";
+import { tw } from "@juvofy/lib/utils/tw";
 const mark = tw.map({
   primary: "text-primary",
   secondary: "text-secondary",

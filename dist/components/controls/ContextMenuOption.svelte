@@ -1,6 +1,6 @@
-<script lang="ts" module>import { event } from "@juvofy/lib/utils/event.ts";
+<script lang="ts" module>import { event } from "@juvofy/lib/utils/event";
 import Chevron from "@juvofy/lib/assets/chevron-right.svg?icon";
-import { assert } from "@juvofy/lib/utils/assert.ts";
+import { assert } from "@juvofy/lib/utils/assert";
 import { getSubmenu } from "../actions/ContextMenu.svelte";
 </script>
 

@@ -1,5 +1,5 @@
 <script lang="ts" module>import DualRangeInput from "@stanko/dual-range-input";
-import { tw } from "@juvofy/lib/utils/tw.ts";
+import { tw } from "@juvofy/lib/utils/tw";
 class DoubleRangeSlider extends DualRangeInput {
   update(method) {
     super.update(method);

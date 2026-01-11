@@ -1,4 +1,4 @@
-import { tw } from "@juvofy/lib/utils/tw.ts";
+import { tw } from "@juvofy/lib/utils/tw";
 import type { HTMLAttributes } from "svelte/elements";
 declare const variants: tw.Prefixed<["badge-primary", "badge-secondary", "badge-warning", "badge-success", "badge-accent", "badge-info", "badge-neutral", "badge-error"], tw.PrefixedMap<["badge-primary", "badge-secondary", "badge-warning", "badge-success", "badge-accent", "badge-info", "badge-neutral", "badge-error"], "badge">>;
 declare const sizes: tw.Prefixed<["badge-xs", "badge-sm", "badge-md", "badge-lg", "badge-xl"], tw.PrefixedMap<["badge-xs", "badge-sm", "badge-md", "badge-lg", "badge-xl"], "badge">>;

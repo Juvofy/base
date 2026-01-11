@@ -1,4 +1,4 @@
-<script lang="ts" module>import { tw } from "@juvofy/lib/utils/tw.ts";
+<script lang="ts" module>import { tw } from "@juvofy/lib/utils/tw";
 const variants = tw.prefixed(
   "status-primary",
   "status-secondary",

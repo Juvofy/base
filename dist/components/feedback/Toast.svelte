@@ -1,4 +1,4 @@
-<script lang="ts" module>import { tw } from "@juvofy/lib/utils/tw.ts";
+<script lang="ts" module>import { tw } from "@juvofy/lib/utils/tw";
 import { slide } from "svelte/transition";
 import Close from "@material-symbols/svg-400/rounded/close.svg?icon";
 import Button from "../actions/Button.svelte";

@@ -1,4 +1,4 @@
-<script lang="ts" module>import { tw } from "@juvofy/lib/utils/tw.ts";
+<script lang="ts" module>import { tw } from "@juvofy/lib/utils/tw";
 import { createContext } from "svelte";
 import { SvelteMap } from "svelte/reactivity";
 const variants = tw.map({

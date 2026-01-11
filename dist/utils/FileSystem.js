@@ -1,5 +1,5 @@
-import { assert } from "./assert.ts";
-import { InvalidPathError, EntryAlreadyExistsError } from "./FileSystemErrors.ts";
+import { assert } from "./assert";
+import { InvalidPathError, EntryAlreadyExistsError } from "./FileSystemErrors";
 export class FileSystem {
     root;
     constructor(root) {

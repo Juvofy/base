@@ -1,4 +1,4 @@
-import type { SpreadParameters } from "./SpreadParameters.ts";
+import type { SpreadParameters } from "./SpreadParameters";
 type TaskValue<Result, Variables extends SpreadParameters> = {
     status: "initial";
 } | {
