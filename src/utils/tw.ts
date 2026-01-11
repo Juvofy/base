@@ -1,5 +1,5 @@
 import type {ClassValue} from "svelte/elements";
-import {assert} from "./assert";
+import {assert} from "./assert.js";
 
 /** Provides autocompletion for tailwindcss */
 function tw<const T extends ClassValue[]>(...classes: T): T {
@@ -23,7 +23,7 @@ declare namespace tw {
 
 	export type Prefixed<
 		Keys extends string[],
-		Map extends object = PrefixedMap<Keys, ExtractPrefix<Keys[number]>>,
+		Map extends object = PrefixedMap<Keys, ExtractPrefix<Keys[number]>>
 	> = <K extends keyof Map>(key?: K) => Map[K] | undefined;
 
 	export type InferPrefixed<P extends Prefixed<string[], object>> = Parameters<P>[0];

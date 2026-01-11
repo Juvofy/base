@@ -3,8 +3,8 @@ import {basename} from "path";
 import {codeToHtml} from "shiki";
 import type {Plugin} from "vite";
 import type {Props} from "@juvofy/lib/components/aot/Shiki.svelte";
-import {createAOTComponentPlugin} from "@juvofy/lib/vite/createAOTComponentPlugin";
-import {resolveShikiLanguage} from "@juvofy/lib/vite/resolveShikiLanguage";
+import {createAOTComponentPlugin} from "./createAOTComponentPlugin.js";
+import {resolveShikiLanguage} from "./resolveShikiLanguage.js";
 
 export function shikiPlugin(): Plugin {
 	return createAOTComponentPlugin({

@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { XMLBuilder, XMLParser } from "fast-xml-parser";
-import { createAOTComponentPlugin } from "./createAOTComponentPlugin";
+import { createAOTComponentPlugin } from "@juvofy/lib/vite/createAOTComponentPlugin";
 const parserOptions = Object.freeze({
     attributesGroupName: "attributes",
     attributeNamePrefix: "",

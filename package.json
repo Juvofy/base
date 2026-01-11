@@ -54,7 +54,7 @@
 			"import": "./dist/vite/*.js"
 		},
 		"./app.tw.css": "./dist/app.tw.css",
-		"./App.svelte": {
+		"./App": {
 			"types": "./dist/App.svelte.d.ts",
 			"import": "./dist/App.svelte"
 		}
