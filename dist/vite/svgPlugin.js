@@ -21,7 +21,7 @@ export function svgPlugin(param) {
     let iconId = 0;
     return createAOTComponentPlugin({
         param,
-        source: "@juvofy/lib/components/aot/Svg.svelte",
+        source: "@juvofy/lib/components/aot/Svg",
         async getVariables(ctx) {
             const rawContent = await readFile(ctx.id, "utf-8");
             const parsed = parser.parse(rawContent);
