@@ -1,4 +1,5 @@
 import { type Snippet } from "svelte";
+import "./app.tw.css";
 export declare class App {
     toast: {
         $on?(type: string, callback: (e: any) => void): () => void;

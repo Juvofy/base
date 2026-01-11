@@ -1,6 +1,7 @@
 <script lang="ts" module>import Dialog from "./components/actions/Dialog.svelte";
 import Toast from "./components/feedback/Toast.svelte";
 import { createContext } from "svelte";
+import "./app.tw.css";
 export class App {
   toast = $state({
     addToQueue() {
