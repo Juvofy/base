@@ -34,14 +34,29 @@
 		"fast-xml-parser": "^5.3.3",
 		"svelte": "^5.46.1"
 	},
+	"files": [
+		"dist"
+	],
 	"exports": {
 		".": {
-			"types": "./dist/index.d.ts",
-			"svelte": "./dist/index.js"
+			"types": "./dist/main.d.ts",
+			"import": "./dist/main.js"
 		},
-		"./*.svelte": {
-			"types": "./dist/*.svelte.d.ts",
-			"import": "./dist/*.svelte"
+		"./components/*": {
+			"types": "./dist/components/*.svelte.d.ts",
+			"import": "./dist/components/*.svelte"
+		},
+		"./utils/*": {
+			"types": "./dist/utils/*.d.ts",
+			"import": "./dist/utils/*.js"
+		},
+		"./vite/*": {
+			"types": "./dist/vite/*.d.ts",
+			"import": "./dist/vite/*.js"
+		},
+		"./app.tw.css": "./dist/app.tw.css",
+		"./App.svelte":  {
+			"types": "./dist/App.svelte.d.ts"
 		}
 	},
 	"pnpm": {

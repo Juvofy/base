@@ -2,6 +2,7 @@
 	import Dialog from "./components/actions/Dialog.svelte";
 	import Toast from "./components/feedback/Toast.svelte";
 	import {createContext, type Snippet} from "svelte";
+	import "./app.tw.css";
 
 	export class App {
 		public toast = $state<Toast>({
