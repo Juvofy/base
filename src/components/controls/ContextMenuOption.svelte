@@ -1,9 +1,9 @@
 <script lang="ts" module>
-	import {event} from "@juvofy/lib/utils/event.ts";
+	import {event} from "@juvofy/lib/utils/event";
 	import Chevron from "@juvofy/lib/assets/chevron-right.svg?icon";
 	import type {Snippet} from "svelte";
 	import type {HTMLButtonAttributes} from "svelte/elements";
-	import {assert} from "@juvofy/lib/utils/assert.ts";
+	import {assert} from "@juvofy/lib/utils/assert";
 	import {getSubmenu} from "../actions/ContextMenu.svelte";
 
 	export interface BaseProps extends HTMLButtonAttributes {

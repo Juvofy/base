@@ -2,7 +2,7 @@
 	import type {HTMLAttributes, MouseEventHandler, HTMLInputAttributes} from "svelte/elements";
 	import Button from "./Button.svelte";
 	import type {Snippet} from "svelte";
-	import {event} from "@juvofy/lib/utils/event.ts";
+	import {event} from "@juvofy/lib/utils/event";
 
 	/**
 	 * Map of input types to their options.

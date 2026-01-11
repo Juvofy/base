@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	import {tw} from "@juvofy/lib/utils/tw.ts";
+	import {tw} from "@juvofy/lib/utils/tw";
 	import type {HTMLAttributes} from "svelte/elements";
 	import CountdownDigit from "./CountdownDigit.svelte";
 	import {getLocale} from "@juvofy/lib/App.svelte";

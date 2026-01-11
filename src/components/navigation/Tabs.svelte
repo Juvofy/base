@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	import {tw} from "@juvofy/lib/utils/tw.ts";
+	import {tw} from "@juvofy/lib/utils/tw";
 	import {createContext, type Snippet} from "svelte";
 	import type {HTMLAttributes} from "svelte/elements";
 	import {SvelteMap} from "svelte/reactivity";

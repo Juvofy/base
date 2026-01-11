@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	import {tw} from "@juvofy/lib/utils/tw.ts";
+	import {tw} from "@juvofy/lib/utils/tw";
 	import type {HTMLAttributes} from "svelte/elements";
 	import {slide} from "svelte/transition";
 	import Close from "@material-symbols/svg-400/rounded/close.svg?icon";

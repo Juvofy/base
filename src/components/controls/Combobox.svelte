@@ -1,10 +1,10 @@
 <script lang="ts" module>
 	import type {HTMLAttributes} from "svelte/elements";
 	import Dropdown from "../actions/Dropdown.svelte";
-	import {escapeRegexPart} from "@juvofy/lib/utils/escapeRegexPart.ts";
+	import {escapeRegexPart} from "@juvofy/lib/utils/escapeRegexPart";
 	import Badge, {type Props as BadgeProps} from "../display/Badge.svelte";
-	import {event} from "@juvofy/lib/utils/event.ts";
-	import {tw} from "@juvofy/lib/utils/tw.ts";
+	import {event} from "@juvofy/lib/utils/event";
+	import {tw} from "@juvofy/lib/utils/tw";
 
 	type BadgeVariant = Exclude<BadgeProps["variant"], undefined>;
 
