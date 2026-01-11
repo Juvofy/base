@@ -1,10 +1,10 @@
 import type { SpreadParameters } from "./SpreadParameters";
-type TaskValue<Result, Variables extends SpreadParameters> = {
+type TaskValue<Result, Args extends SpreadParameters> = {
     status: "initial";
 } | {
     status: "loading";
     promise: Promise<Result>;
-    variables: Variables;
+    args: Args;
 } | {
     status: "success";
     result: Result;
@@ -12,13 +12,13 @@ type TaskValue<Result, Variables extends SpreadParameters> = {
     status: "error";
     error: unknown;
 };
-export declare class Task<Result, Variables extends SpreadParameters = []> {
-    value: TaskValue<Result, Variables>;
+export declare class Task<Result, Args extends SpreadParameters = []> {
+    value: TaskValue<Result, Args>;
     private readonly callback;
-    constructor(callback: (...variables: Variables) => Promise<Result>);
-    start(...variables: Variables): Promise<Result>;
-    hasStatus<S extends TaskValue<Result, Variables>["status"]>(status: S): this is Task<Result, Variables> & {
-        value: Extract<TaskValue<Result, Variables>, {
+    constructor(callback: (...args: Args) => Promise<Result>);
+    start(...args: Args): Promise<Result>;
+    hasStatus<S extends TaskValue<Result, Args>["status"]>(status: S): this is Task<Result, Args> & {
+        value: Extract<TaskValue<Result, Args>, {
             status: S;
         }>;
     };

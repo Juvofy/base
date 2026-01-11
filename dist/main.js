@@ -1,7 +1,7 @@
 import { mount } from "svelte";
 import "./app.tw.css";
-import App from "./App.svelte";
-const app = mount(App, {
+import Examples from "./examples/Examples.svelte";
+const app = mount(Examples, {
     target: document.body.appendChild(document.createElement("div")),
 });
 export default app;

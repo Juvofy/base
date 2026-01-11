@@ -4,12 +4,12 @@ export class Task {
     constructor(callback) {
         this.callback = callback;
     }
-    async start(...variables) {
-        const promise = this.callback(...variables);
+    async start(...args) {
+        const promise = this.callback(...args);
         this.value = {
             status: "loading",
             promise,
-            variables,
+            args,
         };
         try {
             const result = await promise;
