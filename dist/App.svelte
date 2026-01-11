@@ -2,7 +2,7 @@
 import Toast from "./components/feedback/Toast.svelte";
 import { createContext } from "svelte";
 import "./app.tw.css";
-export class App {
+export class AppState {
   toast = $state({
     addToQueue() {
     }
@@ -23,7 +23,7 @@ const [getLocale, setLocale] = createContext();
 export { getLocale };
 </script>
 
-<script lang="ts">const app = new App();
+<script lang="ts">const app = new AppState();
 setApp(app);
 setLocale(document.documentElement.lang);
 const { children } = $props();

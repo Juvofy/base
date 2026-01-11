@@ -1,6 +1,6 @@
 import { type Snippet } from "svelte";
 import "./app.tw.css";
-export declare class App {
+export declare class AppState {
     toast: {
         $on?(type: string, callback: (e: any) => void): () => void;
         $set?(props: Partial<import("./components/feedback/Toast.svelte").Props>): void;
@@ -18,7 +18,7 @@ export declare class App {
     };
     theme: string;
 }
-declare const getApp: () => any;
+declare const getApp: () => AppState;
 export { getApp };
 declare const getLocale: () => string;
 export { getLocale };
