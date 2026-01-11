@@ -1,8 +1,8 @@
 import {readFile} from "node:fs/promises";
 import {XMLBuilder, XMLParser} from "fast-xml-parser";
 import type {Plugin} from "vite";
-import {type AOTPluginContext, createAOTComponentPlugin} from "./createAOTComponentPlugin";
-import type {Props} from "../../src/components/aot/Svg.svelte";
+import {type AOTPluginContext, createAOTComponentPlugin} from "@juvofy/lib/vite/createAOTComponentPlugin";
+import type {Props} from "@juvofy/lib/components/aot/Svg.svelte";
 
 const parserOptions = Object.freeze({
 	attributesGroupName: "attributes",

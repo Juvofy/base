@@ -2,9 +2,9 @@ import {readFile} from "fs/promises";
 import {basename} from "path";
 import {codeToHtml} from "shiki";
 import type {Plugin} from "vite";
-import type {Props} from "../../src/components/aot/Shiki.svelte";
-import {createAOTComponentPlugin} from "./createAOTComponentPlugin";
-import {resolveShikiLanguage} from "./resolveShikiLanguage";
+import type {Props} from "@juvofy/lib/components/aot/Shiki.svelte";
+import {createAOTComponentPlugin} from "@juvofy/lib/vite/createAOTComponentPlugin";
+import {resolveShikiLanguage} from "@juvofy/lib/vite/resolveShikiLanguage";
 
 export function shikiPlugin(): Plugin {
 	return createAOTComponentPlugin({
