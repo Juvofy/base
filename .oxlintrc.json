@@ -1,0 +1,20 @@
+{
+	"rules": {
+		"unicorn/prefer-string-slice": "error",
+		"no-sparse-arrays": "off",
+		"eqeqeq": "error",
+		"no-var": "error",
+		"no-useless-call": "error",
+		"no-console": "error",
+		"unicorn/catch-error-name": "error",
+		"typescript/prefer-for-of": "error",
+		"typescript/array-type": "error",
+		"guard-for-in": "error",
+		"grouped-accessor-pairs": "error",
+		"curly": "error",
+		"prefer-template": "error",
+		"prefer-spread": "error",
+		"unicorn/no-zero-fractions": "error",
+		"unicorn/prefer-includes": "error"
+	}
+}

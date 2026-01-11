@@ -1,0 +1,81 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+:root {
+	color-scheme: light dark;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+@utility range-thin {
+	--range-fill: 0;
+	--depth: 0;
+	--bg-full: color-mix(in oklab, currentColor calc((var(--range-dir, 1) * 45 + 55) * 1%), #0000);
+	--bg-empty: color-mix(in oklab, currentColor calc((var(--range-dir, 1) * -45 + 55) * 1%), #0000);
+
+	&::-webkit-slider-runnable-track {
+		background-image: linear-gradient(
+			to right,
+			var(--bg-full) 0%,
+			var(--bg-full) var(--progress-value),
+			var(--bg-empty) var(--progress-value),
+			var(--bg-empty) 100%
+		);
+	}
+
+	&::-moz-range-track {
+		background-image: linear-gradient(
+			to right,
+			var(--bg-full) 0%,
+			var(--bg-full) var(--progress-value),
+			var(--bg-empty) var(--progress-value),
+			var(--bg-empty) 100%
+		);
+	}
+}
+
+@utility box-base-100 {
+	@apply bg-base-100 text-base-content;
+}
+
+@utility box-base-200 {
+	@apply bg-base-200 text-base-content;
+}
+
+@utility box-base-300 {
+	@apply bg-base-300 text-base-content;
+}
+
+@utility box-primary {
+	@apply bg-primary text-primary-content;
+}
+
+@utility box-secondary {
+	@apply bg-secondary text-secondary-content;
+}
+
+@utility box-accent {
+	@apply bg-accent text-accent-content;
+}
+
+@utility box-neutral {
+	@apply bg-neutral text-neutral-content;
+}
+
+@utility box-info {
+	@apply bg-info text-info-content;
+}
+
+@utility box-success {
+	@apply bg-success text-success-content;
+}
+
+@utility box-warning {
+	@apply bg-warning text-warning-content;
+}
+
+@utility box-error {
+	@apply bg-error text-error-content;
+}

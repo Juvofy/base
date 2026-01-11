@@ -1,0 +1,7 @@
+{
+	"tailwindCSS.classAttributes": ["class", "class:list"],
+	"tailwindCSS.classFunctions": ["tw", "tw.map", "tw.prefixed"],
+	"files.associations": {
+		"*.tw.css": "tailwindcss"
+	}
+}

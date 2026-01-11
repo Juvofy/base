@@ -1,0 +1,18 @@
+{
+	"prettier": {
+		"allowed": true
+	},
+	"lsp": {
+		"tailwindcss-language-server": {
+			"settings": {
+				"classFunctions": ["tw", "tw.map", "tw.prefixed"],
+				"classAttributes": ["class", "class:list"]
+			}
+		}
+	},
+	"languages": {
+		"CSS": {
+			"language_servers": ["tailwindcss-language-server"]
+		}
+	}
+}

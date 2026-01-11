@@ -1,0 +1,24 @@
+{
+	"arrowParens": "avoid",
+	"useTabs": true,
+	"bracketSpacing": false,
+	"tabWidth": 4,
+	"printWidth": 108,
+	"quoteProps": "consistent",
+	"plugins": ["prettier-plugin-svelte"],
+	"overrides": [
+		{
+			"files": ["*.yml", "*.yaml"],
+			"options": {
+				"useTabs": false,
+				"tabWidth": 2
+			}
+		},
+		{
+			"files": [".svelte"],
+			"options": {
+				"parser": "svelte"
+			}
+		}
+	]
+}
