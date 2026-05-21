@@ -10,6 +10,7 @@ export default defineConfig({
 	resolve: {
 		alias: {
 			"@": resolve(import.meta.dirname, "./src"),
+			"@juvofy/lib": resolve(import.meta.dirname, "./src"),
 		},
 	},
 	esbuild: {

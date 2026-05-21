@@ -5,12 +5,14 @@
 
 	export interface Props extends HTMLAttributes<HTMLDivElement> {
 		files?: File[];
+		name?: string;
+		accepts?: string[] | string;
 	}
 </script>
 
 <script lang="ts">
 	const componentId = $props.id();
-	let {files = $bindable([]), id = componentId}: Props = $props();
+	let {files = $bindable([]), id = componentId, name, accepts}: Props = $props();
 </script>
 
 <div
@@ -18,16 +20,18 @@
 >
 	<input
 		{id}
+		{name}
 		type="file"
 		multiple
 		class="appearance-none absolute inset-0 size-0 opacity-0 z-1"
 		onchange={event => {
 			if (event.currentTarget.files?.length) {
-				files.push(...event.currentTarget.files);
+				files = [...files, ...event.currentTarget.files];
 			} else {
 				files = [];
 			}
 		}}
+		accept={accepts?.toString()}
 	/>
 	<label class="btn btn-primary" for={id}> Choose files </label>
 	{#if files?.length}

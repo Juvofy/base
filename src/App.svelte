@@ -39,7 +39,7 @@
 	const {children}: {children: Snippet} = $props();
 </script>
 
+{@render children()}
+
 <Dialog bind:this={app.dialog} />
 <Toast bind:this={app.toast} />
-
-{@render children()}

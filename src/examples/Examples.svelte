@@ -1,5 +1,6 @@
 <script lang="ts" module>
 	import type {Component} from "svelte";
+	import App from "../App.svelte";
 
 	const svelteFiles = import.meta.glob<Component>("./*/*.svelte", {
 		eager: true,
@@ -28,19 +29,21 @@
 	}
 </script>
 
-<div class="flex flex-col gap-16">
-	{#each sections as [name, examples] (name)}
-		<section class="flex flex-col gap-4">
-			<h2 class="text-4xl font-bold mb-4">{name}</h2>
-			{#each examples as [name, Component, Source] (Component)}
-				<article class="flex flex-col gap-4">
-					<h3 class="text-2xl font-bold">{name}</h3>
-					<div class="bg-base-200 p-4 rounded-box flex flex-col gap-4">
-						<Component />
-					</div>
-					<Source />
-				</article>
-			{/each}
-		</section>
-	{/each}
-</div>
+<App>
+	<div class="flex flex-col gap-16 p-8">
+		{#each sections as [name, examples] (name)}
+			<section class="flex flex-col gap-4">
+				<h2 class="text-4xl font-bold mb-4">{name}</h2>
+				{#each examples as [name, Component, Source] (Component)}
+					<article class="flex flex-col gap-4">
+						<h3 class="text-2xl font-bold">{name}</h3>
+						<div class="bg-base-200 p-4 rounded-box flex flex-col gap-4">
+							<Component />
+						</div>
+						<Source />
+					</article>
+				{/each}
+			</section>
+		{/each}
+	</div>
+</App>

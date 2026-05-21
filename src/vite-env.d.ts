@@ -2,10 +2,9 @@
 /// <reference types="vite/client" />
 
 declare module "*?icon" {
-	import type {Component} from "svelte";
-	import type {SVGAttributes} from "svelte/elements";
+	import type {IconComponent} from "@juvofy/lib/components/IconComponent";
 
-	const Icon: Component<SVGAttributes<SVGSVGElement>>;
+	const Icon: IconComponent;
 	export default Icon;
 }
 
