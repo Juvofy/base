@@ -1,7 +1,7 @@
 {
 	"name": "@juvofy/lib",
 	"private": true,
-	"version": "1.0.0",
+	"version": "1.0.2",
 	"type": "module",
 	"license": "MIT",
 	"scripts": {
@@ -38,7 +38,8 @@
 		"tailwindcss": "^4.3.0"
 	},
 	"files": [
-		"dist"
+		"dist",
+		"src"
 	],
 	"exports": {
 		".": {
