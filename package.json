@@ -1,7 +1,7 @@
 {
 	"name": "@juvofy/lib",
 	"private": true,
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"type": "module",
 	"license": "MIT",
 	"scripts": {
@@ -18,7 +18,7 @@
 		"@tsconfig/svelte": "^5.0.8",
 		"@types/node": "^25.9.1",
 		"oxlint": "^1.66.0",
-		"prettier-plugin-svelte": "^4.0.0",
+		"prettier-plugin-svelte": "^4.0.1",
 		"svelte-check": "^4.4.8",
 		"svelte-eslint-parser": "^1.6.1",
 		"typescript": "~6.0.3",
@@ -37,10 +37,6 @@
 		"svelte": "^5.55.9",
 		"tailwindcss": "^4.3.0"
 	},
-	"files": [
-		"dist",
-		"src"
-	],
 	"exports": {
 		".": {
 			"types": "./dist/main.d.ts",
@@ -70,6 +66,6 @@
 		]
 	},
 	"peerDependencies": {
-		"vite": "^7.3.1"
+		"vite": "^8.0.14"
 	}
 }
