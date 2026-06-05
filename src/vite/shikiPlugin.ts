@@ -10,7 +10,7 @@ export function shikiPlugin(): Plugin {
 	return createAOTComponentPlugin({
 		name: "svelte-shiki-plugin",
 		param: "shiki",
-		source: "@juvofy/lib/components/aot/Shiki.svelte",
+		source: "@juvofy/lib/components/aot/Shiki",
 		async getVariables(ctx): Promise<Props["vars"]> {
 			const theme = ctx.parameters.get("theme") ?? "github-dark-default";
 			const code = await readFile(ctx.id, "utf-8");

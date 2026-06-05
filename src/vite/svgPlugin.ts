@@ -32,7 +32,7 @@ export function svgPlugin(param: string): Plugin {
 
 	return createAOTComponentPlugin({
 		param,
-		source: "@juvofy/lib/components/aot/Svg.svelte",
+		source: "@juvofy/lib/components/aot/Svg",
 		async getVariables(ctx: AOTPluginContext): Promise<Props["vars"]> {
 			const rawContent = await readFile(ctx.id, "utf-8");
 			const parsed = parser.parse(rawContent) as {svg?: Node};
