@@ -9,23 +9,29 @@
 		"build": "vite build",
 		"preview": "vite preview",
 		"postinstall": "vite build",
-		"preversion": "pnpm svelte-package -i src"
+		"format": "prettier --write .",
+		"preversion": "pnpm svelte-package -i src",
+		"storybook": "storybook dev -p 6006",
+		"build-storybook": "storybook build"
 	},
 	"devDependencies": {
-		"@sveltejs/package": "^2.5.7",
+		"@storybook/addon-svelte-csf": "^5.1.2",
+		"@storybook/svelte-vite": "^10.4.2",
+		"@sveltejs/package": "^2.5.8",
 		"@sveltejs/vite-plugin-svelte": "^7.1.2",
 		"@tailwindcss/vite": "^4.3.0",
 		"@tsconfig/svelte": "^5.0.8",
 		"@types/node": "^25.9.1",
-		"oxlint": "^1.66.0",
-		"prettier-plugin-svelte": "^4.0.1",
-		"svelte-check": "^4.4.8",
-		"svelte-eslint-parser": "^1.6.1",
+		"oxlint": "^1.68.0",
+		"prettier-plugin-svelte": "^4.1.0",
+		"storybook": "^10.4.2",
+		"svelte-check": "^4.6.0",
+		"svelte-eslint-parser": "^1.8.0",
 		"typescript": "~6.0.3",
-		"vite": "^8.0.14"
+		"vite": "^8.0.16"
 	},
 	"dependencies": {
-		"@material-symbols/svg-400": "^0.44.8",
+		"@material-symbols/svg-400": "^0.44.12",
 		"@stanko/dual-range-input": "^1.0.1",
 		"@types/common-tags": "^1.8.4",
 		"cally": "^0.9.2",
@@ -34,7 +40,7 @@
 		"emoji-picker": "^0.0.7",
 		"emoji-picker-element-data": "^1.8.0",
 		"fast-xml-parser": "^5.8.0",
-		"svelte": "^5.55.9",
+		"svelte": "^5.56.1",
 		"tailwindcss": "^4.3.0"
 	},
 	"exports": {
@@ -59,11 +65,6 @@
 			"types": "./dist/App.svelte.d.ts",
 			"import": "./dist/App.svelte"
 		}
-	},
-	"pnpm": {
-		"onlyBuiltDependencies": [
-			"esbuild"
-		]
 	},
 	"peerDependencies": {
 		"vite": "^8.0.14"

@@ -80,7 +80,7 @@ export function createAOTComponentPlugin<T>({source, param, name, ...hooks}: AOT
 						await hooks.getVariables.call(this, {
 							id: resolvedFilePath,
 							parameters,
-						})
+						}),
 					)}}
 				/>
 			`;

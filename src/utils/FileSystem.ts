@@ -57,13 +57,13 @@ export class FileSystem {
 	async #getDirectoryFromSegments(
 		[first, ...segments]: string[],
 		create: boolean,
-		dir = this.#root
+		dir = this.#root,
 	): Promise<FileSystemDirectoryHandle> {
 		if (first) {
 			return this.#getDirectoryFromSegments(
 				segments,
 				create,
-				await dir.getDirectoryHandle(first, {create})
+				await dir.getDirectoryHandle(first, {create}),
 			);
 		} else {
 			return dir;

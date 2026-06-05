@@ -39,7 +39,7 @@ export class Task<Result, Args extends SpreadParameters = []> {
 	}
 
 	public hasStatus<S extends TaskValue<Result, Args>["status"]>(
-		status: S
+		status: S,
 	): this is Task<Result, Args> & {value: Extract<TaskValue<Result, Args>, {status: S}>} {
 		return this.value.status === status;
 	}

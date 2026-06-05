@@ -22,11 +22,11 @@ Add the following to your global CSS file (e.g., `app.css`):
 
 ## 🚀 Features
 
--   **Svelte + daisyUI:** Native Svelte implementation of daisyUI components with full TypeScript support.
--   **Built-in Icons:** A custom SVG plugin that handles icon injection without duplicating SVG source code.
--   **AOT Syntax Highlighting:** Integrated Shiki support for beautiful code blocks that don't slow down your site.
--   **Advanced Controls:** Complex UI elements like `DatePicker`, `Combobox`, `FileTree`, and `DoubleRangeSlider` ready to use.
--   **Developer Utilities:** Logic for breakpoints, filesystem operations, and reactive tasks.
+- **Svelte + daisyUI:** Native Svelte implementation of daisyUI components with full TypeScript support.
+- **Built-in Icons:** A custom SVG plugin that handles icon injection without duplicating SVG source code.
+- **AOT Syntax Highlighting:** Integrated Shiki support for beautiful code blocks that don't slow down your site.
+- **Advanced Controls:** Complex UI elements like `DatePicker`, `Combobox`, `FileTree`, and `DoubleRangeSlider` ready to use.
+- **Developer Utilities:** Logic for breakpoints, filesystem operations, and reactive tasks.
 
 ---
 
@@ -81,9 +81,9 @@ export default defineConfig({
 
 We’ve included a `utils` directory full of helpers that solve common "hobby dev" headaches:
 
--   **`Task.svelte.ts`**: A way how to inspect promise status outside of the `{#await }` block.
--   **`Breakpoint`**: A reactive value for Tailwind CSS breakpoint. Use it carefully, it can't work on SSR.
--   **`FileSystem`**: A wrapper for the File System Access API (OPFS) providing high-level utility methods for file and directory management.
+- **`Task.svelte.ts`**: A way how to inspect promise status outside of the `{#await }` block.
+- **`Breakpoint`**: A reactive value for Tailwind CSS breakpoint. Use it carefully, it can't work on SSR.
+- **`FileSystem`**: A wrapper for the File System Access API (OPFS) providing high-level utility methods for file and directory management.
 
 ---
 
