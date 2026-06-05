@@ -34,7 +34,9 @@
 <script lang="ts">
 	const app = new AppState();
 	setApp(app);
-	setLocale(document.documentElement.lang);
+	if (typeof document !== "undefined") {
+		setLocale(document.documentElement.lang);
+	}
 
 	const {children}: {children: Snippet} = $props();
 </script>
