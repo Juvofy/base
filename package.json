@@ -46,24 +46,29 @@
 	"exports": {
 		".": {
 			"types": "./dist/main.d.ts",
-			"import": "./dist/main.js"
+			"import": "./dist/main.js",
+			"svelte": "./dist/main.js"
 		},
 		"./components/*": {
 			"types": "./dist/components/*.svelte.d.ts",
-			"import": "./dist/components/*.svelte"
+			"import": "./dist/components/*.svelte",
+			"svelte": "./dist/components/*.svelte"
 		},
 		"./utils/*": {
 			"types": "./dist/utils/*.d.ts",
-			"import": "./dist/utils/*.js"
+			"import": "./dist/utils/*.js",
+			"svelte": "./dist/utils/*.js"
 		},
 		"./vite/*": {
 			"types": "./dist/vite/*.d.ts",
-			"import": "./dist/vite/*.js"
+			"import": "./dist/vite/*.js",
+			"svelte": "./dist/vite/*.js"
 		},
 		"./app.tw.css": "./dist/app.tw.css",
 		"./App": {
 			"types": "./dist/App.svelte.d.ts",
-			"import": "./dist/App.svelte"
+			"import": "./dist/App.svelte",
+			"svelte": "./dist/App.svelte"
 		}
 	},
 	"peerDependencies": {
