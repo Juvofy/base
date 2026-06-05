@@ -8,9 +8,8 @@
 		"dev": "vite",
 		"build": "vite build",
 		"preview": "vite preview",
-		"postinstall": "vite build",
+		"postinstall": "pnpm svelte-package -i src",
 		"format": "prettier --write .",
-		"preversion": "pnpm svelte-package -i src",
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build"
 	},
