@@ -47,11 +47,6 @@
 			"import": "./dist/main.js",
 			"svelte": "./dist/main.js"
 		},
-		"./app": {
-			"types": "./dist/App.svelte.d.ts",
-			"import": "./dist/App.svelte",
-			"svelte": "./dist/App.svelte"
-		},
 		"./components/*": {
 			"types": "./dist/components/*.svelte.d.ts",
 			"import": "./dist/components/*.svelte",
