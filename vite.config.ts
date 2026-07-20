@@ -12,6 +12,7 @@ export default defineConfig({
 			"@": resolve(import.meta.dirname, "./src"),
 			"@juvofy/lib": resolve(import.meta.dirname, "./src"),
 		},
+		extensions: [".ts", ".js", ".svelte"],
 	},
 	esbuild: {
 		target: "ES2024",
