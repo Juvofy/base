@@ -1,8 +1,9 @@
+// This file has been automatically migrated to valid ESM format by Storybook.
 import type {StorybookConfig} from "@storybook/svelte-vite";
 import {resolve} from "path";
 import {fileURLToPath} from "url";
 
-const __dirname = fileURLToPath(new URL(".", import.meta.url));
+const dirname = fileURLToPath(new URL(".", import.meta.url));
 
 const config: StorybookConfig = {
 	stories: ["../src/stories/**/*.stories.svelte"],
@@ -22,8 +23,8 @@ const config: StorybookConfig = {
 				...(typeof config.resolve?.alias === "object" && !Array.isArray(config.resolve.alias)
 					? config.resolve.alias
 					: {}),
-				"@": resolve(__dirname, "../src"),
-				"@juvofy/lib": resolve(__dirname, "../src"),
+				"@": resolve(dirname, "../src"),
+				"@juvofy/lib": resolve(dirname, "../src"),
 			},
 		};
 
