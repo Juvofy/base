@@ -2,7 +2,7 @@
 	import Dialog from "./components/actions/Dialog.svelte";
 	import Toast from "./components/feedback/Toast.svelte";
 	import {createContext, type Snippet} from "svelte";
-	import "./app.tw.ycss";
+	import "./app.tw.css";
 
 	export class AppState {
 		public toast = $state<Toast>({
