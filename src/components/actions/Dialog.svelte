@@ -160,7 +160,7 @@
 	{@attach event("click", (options?.closeWhenBackdropClicked ?? true) ? escapeOnBackdrop : () => {})}
 >
 	{#if options}
-		<div class="modal-box">
+		<form class="modal-box" method="dialog">
 			<h3 class="text-lg font-bold empty:hidden">
 				{options.title}
 			</h3>
@@ -221,23 +221,23 @@
 				/>
 			{/if}
 
-			<form class="modal-action" action="javascript:this.{id}.close({JSON.stringify(SAVE_VALUE)})">
+			<div class="modal-action">
 				{#if options.confirmButton !== false}
 					<Button
 						variant="primary"
-						formmethod="post"
 						type="submit"
+						value={SAVE_VALUE}
 						disabled={!options.value && options?.type !== "none"}
 					>
 						{@render dialogPart(options?.confirmButton ?? true, "OK")}
 					</Button>
 				{/if}
 				{#if options.cancelButton !== false}
-					<Button formmethod="dialog" type="submit">
+					<Button type="submit">
 						{@render dialogPart(options?.cancelButton ?? true, "Cancel")}
 					</Button>
 				{/if}
-			</form>
-		</div>
+			</div>
+		</form>
 	{/if}
 </dialog>
