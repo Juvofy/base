@@ -8,8 +8,8 @@
 
 <script lang="ts" generics="Type extends CalendarType">
 	const componentId = $props.id();
-	const locale = getLocale();
-	const placeholder = placeholderDate.toLocaleDateString(locale).replace(/\d/g, "x");
+	const locale = $derived.by(getLocale());
+	const placeholder = $derived(placeholderDate.toLocaleDateString(locale).replace(/\d/g, "x"));
 	let {value = $bindable(), id = componentId, class: customClass, ...rest}: Props<Type> = $props();
 </script>
 

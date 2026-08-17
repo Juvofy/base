@@ -19,13 +19,13 @@
 </script>
 
 <Story name="Date">
-	<App>
+	<App lang="en">
 		<DatePicker type="date" />
 	</App>
 </Story>
 
 <Story name="Range">
-	<App>
+	<App lang="en">
 		<span>Book a flight</span>
 		<DatePicker type="range" bind:value={bookingDate} />
 		<span>
@@ -36,12 +36,4 @@
 			{/if}
 		</span>
 	</App>
-</Story>
-
-<Story name="Interactive" args={{type: "date"}}>
-	{#snippet template(args)}
-		<App>
-			<DatePicker type={args.type} />
-		</App>
-	{/snippet}
 </Story>

@@ -32,7 +32,7 @@
 </script>
 
 <Story name="Variants">
-	<App>
+	<App lang="en">
 		<Badge variant="primary">Primary</Badge>
 		<Badge variant="secondary">Secondary</Badge>
 		<Badge variant="warning">Warning</Badge>
@@ -45,7 +45,7 @@
 </Story>
 
 <Story name="Sizes">
-	<App>
+	<App lang="en">
 		<Badge size="xs">Extra Small</Badge>
 		<Badge size="sm">Small</Badge>
 		<Badge size="md">Medium</Badge>
@@ -55,18 +55,10 @@
 </Story>
 
 <Story name="Decorations">
-	<App>
+	<App lang="en">
 		<Badge decoration="outline">Outline</Badge>
 		<Badge decoration="dash">Dash</Badge>
 		<Badge decoration="soft">Soft</Badge>
 		<Badge decoration="ghost">Ghost</Badge>
 	</App>
-</Story>
-
-<Story name="Interactive" args={{variant: "primary", size: "md"}}>
-	{#snippet template(args)}
-		<App>
-			<Badge variant={args.variant} size={args.size} decoration={args.decoration}>Badge</Badge>
-		</App>
-	{/snippet}
 </Story>

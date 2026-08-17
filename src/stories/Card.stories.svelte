@@ -19,7 +19,7 @@
 </script>
 
 <Story name="Sizes">
-	<App>
+	<App lang="en">
 		<Card size="xs" class="bg-base-100 shadow-sm">Extra Small</Card>
 		<Card size="sm" class="bg-base-100 shadow-sm">Small</Card>
 		<Card size="md" class="bg-base-100 shadow-sm">Medium</Card>
@@ -29,18 +29,8 @@
 </Story>
 
 <Story name="Decorations">
-	<App>
+	<App lang="en">
 		<Card decoration="border" class="bg-base-100">Border</Card>
 		<Card decoration="dash" class="bg-base-100">Dash</Card>
 	</App>
-</Story>
-
-<Story name="Interactive" args={{size: "md"}}>
-	{#snippet template(args)}
-		<App>
-			<Card size={args.size} decoration={args.decoration} class="bg-base-100 shadow-sm">
-				Card content
-			</Card>
-		</App>
-	{/snippet}
 </Story>
