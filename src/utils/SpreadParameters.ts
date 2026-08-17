@@ -1,3 +1,4 @@
+// oxlint-disable typescript/no-explicit-any
 /**
  * Type that every `Parameters<?>` type satisfies.
  *

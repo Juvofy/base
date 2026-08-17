@@ -52,7 +52,8 @@
 
 <Story name="Prompt">
 	<Button
-		onclick={() => promptDialog.fire({type: "text", title: "Asking", body: "How are you?"})}
+		onclick={() =>
+			promptDialog.fire({type: "text", title: "Asking", body: "How are you?"}).then(console.log)}
 		class="w-fit"
 		variant="primary"
 	>
