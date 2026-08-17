@@ -10,7 +10,7 @@
 </script>
 
 <Story name="Button">
-	<App>
+	<App lang="en">
 		<Dropdown>
 			{#snippet button({popover})}
 				<Button variant="primary" class="w-fit" {@attach popover}>Open</Button>

@@ -56,7 +56,7 @@
 	let instance = $state<HTMLElementTagNameMap[typeof tag]>();
 
 	const tag = $derived(`calendar-${type}` as const);
-	const locale = getLocale();
+	const locale = $derived.by(getLocale());
 
 	function rangeend(event: Event) {
 		if (onrangeend && event instanceof CustomEvent && event.detail instanceof Date) {

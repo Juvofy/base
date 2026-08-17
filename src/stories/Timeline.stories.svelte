@@ -16,7 +16,7 @@
 </script>
 
 <Story name="Horizontal">
-	<App>
+	<App lang="en">
 		<Timeline direction="horizontal">
 			<TimelineItem>
 				{#snippet start()}The Bite Of{/snippet}
@@ -38,7 +38,7 @@
 </Story>
 
 <Story name="Vertical">
-	<App>
+	<App lang="en">
 		<Timeline direction="vertical">
 			<TimelineItem>
 				{#snippet start()}The Bite Of{/snippet}
@@ -57,28 +57,4 @@
 			</TimelineItem>
 		</Timeline>
 	</App>
-</Story>
-
-<Story name="Interactive" args={{direction: "horizontal"}}>
-	{#snippet template(args)}
-		<App>
-			<Timeline direction={args.direction}>
-				<TimelineItem>
-					{#snippet start()}The Bite Of{/snippet}
-					{#snippet middle()}X{/snippet}
-					{#snippet end()}87{/snippet}
-				</TimelineItem>
-				<TimelineItem>
-					{#snippet start()}Warframe{/snippet}
-					{#snippet middle()}X{/snippet}
-					{#snippet end()}1999{/snippet}
-				</TimelineItem>
-				<TimelineItem>
-					{#snippet start()}Blade Runner{/snippet}
-					{#snippet middle()}X{/snippet}
-					{#snippet end()}2049{/snippet}
-				</TimelineItem>
-			</Timeline>
-		</App>
-	{/snippet}
 </Story>

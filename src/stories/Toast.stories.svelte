@@ -16,17 +16,9 @@
 </script>
 
 <script lang="ts">
-	let toast = $state<Toast>({addToQueue() {}});
 	let variantsToast = $state<Toast>({addToQueue() {}});
 	let interactiveToast = $state<Toast>({addToQueue() {}});
 </script>
-
-<Story name="Basic">
-	<Button onclick={() => toast.addToQueue({text: "toasted"})} class="w-fit" variant="primary">
-		Show toast
-	</Button>
-	<Toast bind:this={toast} />
-</Story>
 
 <Story name="Variants">
 	<div class="flex gap-2 flex-wrap">

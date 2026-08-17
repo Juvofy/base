@@ -27,7 +27,7 @@
 <script lang="ts">
 	const {value, class: customClass, variant, ...props}: Props = $props();
 	const variantClass = $derived(variants(variant));
-	const locale = getLocale();
+	const locale = $derived.by(getLocale());
 
 	const formatters = countdownUnits.reduce(
 		(previous, unit) => ({

@@ -9,7 +9,7 @@
 </script>
 
 <Story name="Rotating Word">
-	<App>
+	<App lang="en">
 		<div class="flex items-center gap-2">
 			<span>Come Buy Our</span>
 			<RotatingTexts texts={["Computers", "Phones", "Laptops", "KV-1"]} />
@@ -18,7 +18,7 @@
 </Story>
 
 <Story name="Rotating Sentence">
-	<App>
+	<App lang="en">
 		<RotatingTexts texts={["We", "Have", "Laptops", "On", "Sale!"]} />
 	</App>
 </Story>
