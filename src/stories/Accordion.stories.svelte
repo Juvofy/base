@@ -16,7 +16,7 @@
 </script>
 
 <Story name="Group">
-	<App>
+	<App lang="en">
 		<AccordionGroup class="w-full">
 			<Accordion icon="arrow" class="bg-base-200 border-base-300 border">
 				{#snippet label()}Lorem{/snippet}
@@ -40,7 +40,7 @@
 
 <Story name="Interactive" args={{icon: "arrow"}}>
 	{#snippet template(args)}
-		<App>
+		<App lang="en">
 			<AccordionGroup class="w-full">
 				<Accordion icon={args.icon} class="bg-base-200 border-base-300 border">
 					{#snippet label()}Lorem{/snippet}

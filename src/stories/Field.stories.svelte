@@ -18,13 +18,13 @@
 </script>
 
 <Story name="Email">
-	<App>
+	<App lang="en">
 		<Field type="email" placeholder="Enter your email" />
 	</App>
 </Story>
 
 <Story name="Password">
-	<App>
+	<App lang="en">
 		<Field type="password" minlength={8} />
 	</App>
 </Story>
@@ -34,7 +34,7 @@
 	args={{type: "email", placeholder: "Enter value...", disabled: false, required: false}}
 >
 	{#snippet template(args)}
-		<App>
+		<App lang="en">
 			<Field
 				type={args.type}
 				placeholder={args.placeholder}

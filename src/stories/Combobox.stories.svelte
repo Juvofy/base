@@ -27,13 +27,13 @@
 </script>
 
 <Story name="Basic">
-	<App>
+	<App lang="en">
 		<Combobox options={["Option 1", "Option 2", "Option 3"]} />
 	</App>
 </Story>
 
 <Story name="Many Options">
-	<App>
+	<App lang="en">
 		<Combobox
 			options={[
 				"Apple",
@@ -76,7 +76,7 @@
 	}}
 >
 	{#snippet template(args)}
-		<App>
+		<App lang="en">
 			<Combobox
 				options={["Option 1", "Option 2", "Option 3"]}
 				variant={args.variant}

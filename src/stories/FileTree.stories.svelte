@@ -9,7 +9,7 @@
 </script>
 
 <Story name="Basic">
-	<App>
+	<App lang="en">
 		<FileTree
 			content={[
 				{name: "resume.pdf"},

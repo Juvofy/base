@@ -28,7 +28,7 @@
 </script>
 
 <Story name="Variants">
-	<App>
+	<App lang="en">
 		<span><Status variant="primary" /> Primary</span>
 		<span><Status variant="secondary" /> Secondary</span>
 		<span><Status variant="warning" /> Warning</span>
@@ -41,19 +41,11 @@
 </Story>
 
 <Story name="Sizes">
-	<App>
+	<App lang="en">
 		<span><Status size="xs" /> Extra Small</span>
 		<span><Status size="sm" /> Small</span>
 		<span><Status size="md" /> Medium</span>
 		<span><Status size="lg" /> Large</span>
 		<span><Status size="xl" /> Extra Large</span>
 	</App>
-</Story>
-
-<Story name="Interactive" args={{variant: "primary", size: "md"}}>
-	{#snippet template(args)}
-		<App>
-			<span><Status variant={args.variant} size={args.size} /> {args.variant ?? "default"}</span>
-		</App>
-	{/snippet}
 </Story>

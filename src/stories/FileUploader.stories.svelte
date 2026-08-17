@@ -12,14 +12,14 @@
 </script>
 
 <Story name="Basic">
-	<App>
+	<App lang="en">
 		<FileUploader />
 	</App>
 </Story>
 
 <Story name="Interactive" args={{accepts: ""}}>
 	{#snippet template(args)}
-		<App>
+		<App lang="en">
 			<FileUploader accepts={args.accepts || undefined} />
 		</App>
 	{/snippet}
