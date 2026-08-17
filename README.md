@@ -32,10 +32,28 @@ Add the following to your global CSS file (e.g., `app.css`):
 
 ## 📦 Installation
 
-Install the package via PNPM:
+Install the package via PNPM directly from GitHub:
 
 ```bash
 pnpm add github:Juvofy/base
+```
+
+Since the package is installed from a Git repo (not a published registry tarball), PNPM needs to run its build step so the `postinstall` script (`svelte-package`) generates the `dist` folder the package's `exports` point to. Make sure builds aren't blocked, e.g. approve the build if PNPM prompts for it, or allowlist it upfront:
+
+```bash
+pnpm approve-builds
+# or, before installing
+pnpm config set onlyBuiltDependencies[] @juvofy/lib
+```
+
+Because the package ships `.svelte` files directly (not pre-compiled JS), your bundler needs to resolve them. If you're using Vite, add `.svelte` to `resolve.extensions` in your `vite.config.ts`:
+
+```typescript
+export default defineConfig({
+	resolve: {
+		extensions: [".ts", ".js", ".svelte"],
+	},
+});
 ```
 
 Or you may prefer to copy the components to your code. If so, you can use this repo as a template.
@@ -63,27 +81,76 @@ Supercharge your development environment with our custom build tools. In your `v
 
 ```typescript
 import {defineConfig} from "vite";
-import {sveltekit} from "@sveltejs/kit/vite";
+import {svelte} from "@sveltejs/vite-plugin-svelte";
 import {svgPlugin, shikiPlugin} from "@juvofy/lib/vite";
 
 export default defineConfig({
 	plugins: [
-		sveltekit(),
+		svelte(),
 		svgPlugin("icon"), // Simplifies SVG usage [query parameter is configurable]
 		shikiPlugin(), // Ahead-of-time code highlighting [query parameter is ?shiki]
 	],
+	resolve: {
+		extensions: [".ts", ".js", ".svelte"], // Required so Vite resolves the library's .svelte files
+	},
 });
+```
+
+---
+
+## 🧹 Linting (oxlint)
+
+This project is linted with [oxlint](https://oxc.rs/docs/guide/usage/linter.html) via `.oxlintrc.json`. If you consume this library and want to extend its lint rules in your own config, reference it with `extends`:
+
+```json
+{
+	"extends": ["./node_modules/@juvofy/lib/.oxlintrc.json"],
+	"rules": {
+		"no-console": "off"
+	}
+}
 ```
 
 ---
 
 ## 🧰 Utilities
 
-We’ve included a `utils` directory full of helpers that solve common "hobby dev" headaches:
+We've included a `utils` directory full of helpers that solve common "hobby dev" headaches. Each one is importable from `@juvofy/lib/utils/<Name>`.
 
-- **`Task.svelte.ts`**: A way how to inspect promise status outside of the `{#await }` block.
-- **`Breakpoint`**: A reactive value for Tailwind CSS breakpoint. Use it carefully, it can't work on SSR.
-- **`FileSystem`**: A wrapper for the File System Access API (OPFS) providing high-level utility methods for file and directory management.
+- **`Breakpoint`**: A `MediaQuery`-based reactive class for Tailwind CSS breakpoints. Construct it with `{up}`, `{down}`, `{up, down}`, or `{exact}` referencing a `BreakpointName` (e.g. `md`), and read `.current` for the live match. Use it carefully — like any `MediaQuery`, it can't work on SSR.
+
+    ```typescript
+    const isDesktop = new Breakpoint({up: "lg"});
+    ```
+
+- **`StorageState.svelte.ts`**: A reactive wrapper class around `localStorage`/`sessionStorage`. Give it a storage kind, a key, and an initial value; read/write the current value through `.value`, and check `.loaded` to know once the persisted value has been hydrated. It stays in sync across tabs via the `storage` event and JSON-serializes values automatically (an optional `reviver` is passed through to `JSON.parse`). No-ops safely outside the browser (SSR).
+
+    ```typescript
+    const settings = new StorageState("local", "settings", {theme: "dark"});
+    settings.value = {theme: "light"};
+    ```
+
+- **`Constructor<T>`**: A type alias for `abstract new (...args: SpreadParameters) => T`, handy for typing mixins or factory functions that accept any class constructor.
+
+- **`PropsUnion<A, B>`**: A type helper that builds a proper union of two prop shapes `A` and `B`, marking the other side's exclusive keys as optional `undefined` so exhaustive prop checks and spreads behave as expected.
+
+- **`Range`** (and the `range()` helper): An iterable numeric range. `range(end)`, `range(start, end)`, or `range(start, end, step)` all return a `Range` instance you can spread or `for...of` over, e.g. `[...range(5)]` or `range(0, 10, 2)`.
+
+- **`SpreadParameters`**: A type alias (`[] | any[]`) that every `Parameters<?>` tuple satisfies — useful as a generic constraint for functions/constructors that forward arbitrary arguments.
+
+- **`assert(condition, thrown?)`**: A TypeScript assertion function — throws `thrown` (or `undefined` if omitted) when `condition` is falsy, narrowing the type afterwards.
+
+- **`escapeRegexPart(string)`**: Escapes regex special characters in a string so it can be safely embedded inside a `RegExp` pattern.
+
+- **`event(eventName, handler?)`**: A Svelte [attachment](https://svelte.dev/docs/svelte/svelte-attachments) factory that wires up a typed DOM event listener (`HTMLElementEventMap`, `SVGElementEventMap`, `MathMLElementEventMap`, or a custom event name) on the element it's attached to, cleaning it up automatically.
+
+    ```svelte
+    <button {@attach event("click", () => console.log("clicked"))}>Click</button>
+    ```
+
+- **`sleep(ms)`**: Returns a `Promise` that resolves after `ms` milliseconds — a minimal `await sleep(1000)` delay helper.
+
+- **`tw(...classes)`**: Passes Tailwind class values through unchanged while giving editor autocompletion for `ClassValue`. Also exposes `tw.map(object)` for typed class-name maps, and `tw.prefixed(...keys)`, which finds the shared dash-delimited prefix among a set of keys and returns a lookup function mapping the unprefixed variant back to the full class name.
 
 ---
 
