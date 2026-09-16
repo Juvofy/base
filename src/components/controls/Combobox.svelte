@@ -22,7 +22,6 @@
 	export interface Props extends HTMLAttributes<HTMLDivElement> {
 		options: string[];
 		value?: string[];
-		placeholder?: string;
 		searchLabel?: string;
 		nothingFoundLabel?: string;
 		variant?: BadgeVariant;
