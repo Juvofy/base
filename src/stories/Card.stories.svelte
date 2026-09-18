@@ -18,7 +18,7 @@
 	});
 </script>
 
-<Story name="Sizes">
+<Story name="Sizes" asChild>
 	<App lang="en">
 		<Card size="xs" class="bg-base-100 shadow-sm">Extra Small</Card>
 		<Card size="sm" class="bg-base-100 shadow-sm">Small</Card>
@@ -28,7 +28,7 @@
 	</App>
 </Story>
 
-<Story name="Decorations">
+<Story name="Decorations" asChild>
 	<App lang="en">
 		<Card decoration="border" class="bg-base-100">Border</Card>
 		<Card decoration="dash" class="bg-base-100">Dash</Card>

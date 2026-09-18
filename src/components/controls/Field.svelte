@@ -66,7 +66,7 @@
 		validationMessage = event.currentTarget.validationMessage || undefined;
 	};
 
-	const Symbol = $derived(typeToSymbolMap[type]);
+	const SymbolIcon = $derived(typeToSymbolMap[type]);
 	const errorId = $derived(`error-${id}`);
 	const patternToUse = $derived.by(() => {
 		if (!pattern && type === "tel") {
@@ -85,8 +85,8 @@
 
 <div>
 	<label for={id} class={["input validator", customClass]}>
-		{#if Symbol}
-			<Symbol class="fill-current h-[1em]" />
+		{#if SymbolIcon}
+			<SymbolIcon class="fill-current h-[1em]" />
 		{/if}
 		<input
 			aria-invalid={validationMessage !== undefined}

@@ -15,7 +15,7 @@
 	});
 </script>
 
-<Story name="Horizontal">
+<Story name="Horizontal" asChild>
 	<App lang="en">
 		<Timeline direction="horizontal">
 			<TimelineItem>
@@ -37,7 +37,7 @@
 	</App>
 </Story>
 
-<Story name="Vertical">
+<Story name="Vertical" asChild>
 	<App lang="en">
 		<Timeline direction="vertical">
 			<TimelineItem>

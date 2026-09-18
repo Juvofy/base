@@ -17,13 +17,13 @@
 	});
 </script>
 
-<Story name="Email">
+<Story name="Email" asChild>
 	<App lang="en">
 		<Field type="email" placeholder="Enter your email" />
 	</App>
 </Story>
 
-<Story name="Password">
+<Story name="Password" asChild>
 	<App lang="en">
 		<Field type="password" minlength={8} />
 	</App>

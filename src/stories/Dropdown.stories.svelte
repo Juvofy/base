@@ -9,7 +9,7 @@
 	});
 </script>
 
-<Story name="Button">
+<Story name="Button" asChild>
 	<App lang="en">
 		<Dropdown>
 			{#snippet button({popover})}

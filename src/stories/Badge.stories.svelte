@@ -31,7 +31,7 @@
 	});
 </script>
 
-<Story name="Variants">
+<Story name="Variants" asChild>
 	<App lang="en">
 		<Badge variant="primary">Primary</Badge>
 		<Badge variant="secondary">Secondary</Badge>
@@ -44,7 +44,7 @@
 	</App>
 </Story>
 
-<Story name="Sizes">
+<Story name="Sizes" asChild>
 	<App lang="en">
 		<Badge size="xs">Extra Small</Badge>
 		<Badge size="sm">Small</Badge>
@@ -54,7 +54,7 @@
 	</App>
 </Story>
 
-<Story name="Decorations">
+<Story name="Decorations" asChild>
 	<App lang="en">
 		<Badge decoration="outline">Outline</Badge>
 		<Badge decoration="dash">Dash</Badge>

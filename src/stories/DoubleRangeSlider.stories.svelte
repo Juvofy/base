@@ -30,7 +30,7 @@
 	let priceRange = $state<[number, number]>([200, 800]);
 </script>
 
-<Story name="Price Filter">
+<Story name="Price Filter" asChild>
 	<App lang="en">
 		<span>
 			Price range: {priceRange[0]}€ &ndash; {priceRange[1]}€

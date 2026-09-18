@@ -1,17 +1,11 @@
 <script lang="ts" module>
 	import {onDestroy} from "svelte";
-	import type {SVGAttributes} from "svelte/elements";
 	import {SvelteMap} from "svelte/reactivity";
+	import type {Props} from "./Svg.types.js";
 
 	const sources = new SvelteMap<string, string>();
 
-	export interface Props extends SVGAttributes<SVGSVGElement> {
-		vars: {
-			raw: string;
-			fileId: string;
-			attributes: SVGAttributes<SVGSymbolElement>;
-		};
-	}
+	export type {Props};
 </script>
 
 <script lang="ts">

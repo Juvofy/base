@@ -1,12 +1,8 @@
 <script lang="ts" module>
-	import type {HTMLAttributes, MouseEventHandler} from "svelte/elements";
+	import type {MouseEventHandler} from "svelte/elements";
+	import type {Props} from "./Shiki.types.js";
 
-	export interface Props extends HTMLAttributes<HTMLDivElement> {
-		vars: {
-			raw: string;
-			filename: string;
-		};
-	}
+	export type {Props};
 </script>
 
 <script lang="ts">

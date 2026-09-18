@@ -18,13 +18,13 @@
 	let bookingDate = $state<string>();
 </script>
 
-<Story name="Date">
+<Story name="Date" asChild>
 	<App lang="en">
 		<DatePicker type="date" />
 	</App>
 </Story>
 
-<Story name="Range">
+<Story name="Range" asChild>
 	<App lang="en">
 		<span>Book a flight</span>
 		<DatePicker type="range" bind:value={bookingDate} />

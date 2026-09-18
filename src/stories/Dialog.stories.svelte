@@ -39,7 +39,7 @@
 	});
 </script>
 
-<Story name="Alert">
+<Story name="Alert" asChild>
 	<Button
 		onclick={() => alertDialog.fire({type: "none", title: "Alert", body: "This is an alert message."})}
 		class="w-fit"
@@ -50,7 +50,7 @@
 	<Dialog bind:this={alertDialog} />
 </Story>
 
-<Story name="Prompt">
+<Story name="Prompt" asChild>
 	<Button
 		onclick={() =>
 			promptDialog.fire({type: "text", title: "Asking", body: "How are you?"}).then(console.log)}

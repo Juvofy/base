@@ -15,7 +15,7 @@
 	});
 </script>
 
-<Story name="Group">
+<Story name="Group" asChild>
 	<App lang="en">
 		<AccordionGroup class="w-full">
 			<Accordion icon="arrow" class="bg-base-200 border-base-300 border">

@@ -8,7 +8,7 @@
 	});
 </script>
 
-<Story name="Basic">
+<Story name="Basic" asChild>
 	<App lang="en">
 		<FileTree
 			content={[

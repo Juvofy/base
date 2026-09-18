@@ -1,11 +1,33 @@
 import type {ClassValue} from "svelte/elements";
 import {assert} from "./assert.js";
 
-/** Provides autocompletion for tailwindcss */
+/**
+ * Provides editor autocompletion for Tailwind classes without changing the value at runtime -
+ * it just returns its arguments as-is. Meant to be used wherever you'd otherwise write a plain
+ * array/string of classes, so tools like the Tailwind IntelliSense extension can recognize it.
+ *
+ * @example
+ * ```ts
+ * const classes = tw("flex", "items-center", "gap-2");
+ * // classes === ["flex", "items-center", "gap-2"]
+ * ```
+ */
 function tw<const T extends ClassValue[]>(...classes: T): T {
 	return classes;
 }
 
+/**
+ * Like {@link tw}, but for an object of named class groups instead of a flat list - handy for
+ * `daisyui`/variant-style class maps where each key documents what the classes are for.
+ *
+ * @example
+ * ```ts
+ * const variants = tw.map({
+ *   primary: "bg-primary text-primary-content",
+ *   ghost: "bg-transparent",
+ * });
+ * ```
+ */
 tw.map = function <K extends string>(object: Record<K, ClassValue>) {
 	return object;
 };
@@ -29,6 +51,20 @@ declare namespace tw {
 	export type InferPrefixed<P extends Prefixed<string[], object>> = Parameters<P>[0];
 }
 
+/**
+ * Given a list of dash-prefixed keys that all share the same prefix (e.g. Tailwind's
+ * `"btn-primary"`, `"btn-secondary"`), finds that shared prefix and returns a function that
+ * turns a bare suffix (`"primary"`) back into the full key (`"btn-primary"`) - with the suffix
+ * autocompleted/type-checked against the keys you passed in. Calling the returned function with
+ * `undefined` returns `undefined`, so it's safe to use directly with an optional prop.
+ *
+ * @example
+ * ```ts
+ * const variant = tw.prefixed("btn-primary", "btn-secondary", "btn-ghost");
+ * variant("primary"); // "btn-primary"
+ * variant(undefined); // undefined
+ * ```
+ */
 tw.prefixed = function <const Keys extends [string, ...string[]]>(...keys: Keys) {
 	const [firstKey, ...restKeys] = keys;
 

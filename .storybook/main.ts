@@ -6,19 +6,24 @@ import {fileURLToPath} from "url";
 const dirname = fileURLToPath(new URL(".", import.meta.url));
 
 const config: StorybookConfig = {
-	stories: ["../src/stories/**/*.stories.svelte"],
-	addons: ["@storybook/addon-svelte-csf"],
+	stories: ["../src/stories/**/*.stories.svelte", "../src/stories/**/*.mdx"],
+	docs: {
+		defaultName: "Docs",
+	},
+	addons: ["@storybook/addon-svelte-csf", "@storybook/addon-docs"],
 	framework: {
 		name: "@storybook/svelte-vite",
 		options: {},
 	},
 	async viteFinal(config) {
 		const {default: tailwindcss} = await import("@tailwindcss/vite");
+		const {svelte} = await import("@sveltejs/vite-plugin-svelte");
 		const {svgPlugin} = await import("../src/vite/svgPlugin.js");
 
-		config.plugins = [...(config.plugins ?? []), tailwindcss(), svgPlugin("icon")];
+		config.plugins = [svelte(), ...(config.plugins ?? []), tailwindcss(), svgPlugin("icon")];
 		config.resolve = {
 			...config.resolve,
+			extensions: [".ts", ".js", ".svelte"],
 			alias: {
 				...(typeof config.resolve?.alias === "object" && !Array.isArray(config.resolve.alias)
 					? config.resolve.alias

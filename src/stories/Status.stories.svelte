@@ -27,7 +27,7 @@
 	});
 </script>
 
-<Story name="Variants">
+<Story name="Variants" asChild>
 	<App lang="en">
 		<span><Status variant="primary" /> Primary</span>
 		<span><Status variant="secondary" /> Secondary</span>
@@ -40,7 +40,7 @@
 	</App>
 </Story>
 
-<Story name="Sizes">
+<Story name="Sizes" asChild>
 	<App lang="en">
 		<span><Status size="xs" /> Extra Small</span>
 		<span><Status size="sm" /> Small</span>

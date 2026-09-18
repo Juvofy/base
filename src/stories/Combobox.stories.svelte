@@ -26,13 +26,13 @@
 	});
 </script>
 
-<Story name="Basic">
+<Story name="Basic" asChild>
 	<App lang="en">
 		<Combobox options={["Option 1", "Option 2", "Option 3"]} />
 	</App>
 </Story>
 
-<Story name="Many Options">
+<Story name="Many Options" asChild>
 	<App lang="en">
 		<Combobox
 			options={[

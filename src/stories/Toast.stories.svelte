@@ -20,7 +20,7 @@
 	let interactiveToast = $state<Toast>({addToQueue() {}});
 </script>
 
-<Story name="Variants">
+<Story name="Variants" asChild>
 	<div class="flex gap-2 flex-wrap">
 		<Button
 			onclick={() => variantsToast.addToQueue({text: "Success!", variant: "success"})}
